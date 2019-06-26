@@ -1,0 +1,18 @@
+loadrt not
+
+addf not.0 servo-thread
+
+net voltage-r <= Therm.raw
+net voltage-r => pyvcp.voltage
+
+net temperature-r <= Therm.temp
+net temperature-r => pyvcp.temp
+
+net spindle-inhibit => not.0.in
+net spindle-ready not.0.out => pyvcp.Spindle-ready
+
+net release-button => pyvcp.Button-pressed
+
+net release-tool => pyvcp.Solenoid-activated
+
+net tool-present => pyvcp.Tool-clamped

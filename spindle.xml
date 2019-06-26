@@ -1,0 +1,85 @@
+<pyvcp>
+
+
+	<meter>
+		<halpin>"temp"</halpin>
+		<text>"Spindle"</text>
+		<subtext>"Temperature[C]"</subtext>
+		<size>250</size>
+		<min_>10</min_>
+		<max_>140</max_>
+		<majorscale>10</majorscale>
+		<minorscale>2</minorscale>
+		<region1>(115,140,"red")</region1>
+		<region2>(105,115,"green")</region2>
+		<region3>(10,105,"blue")</region3>
+	</meter>
+
+<vbox>
+
+	<hbox>
+        <led>
+        <size>40</size>
+        <halpin>"Spindle-ready"</halpin>
+	<off_color>"black"</off_color>
+        </led>
+        <label> 
+	<text>"Spindle ready"</text>
+	<font>(200)</font>
+	</label>
+        </hbox>	
+
+	<hbox>
+	<led>
+	<size>40</size>
+	<halpin>"Tool-clamped"</halpin>
+	<off_color>"black"</off_color>	
+	</led>
+	<label>
+        <text>"Tool clamped"</text>
+        <font>(200)</font>
+        </label>
+	</hbox>
+
+	<hbox>
+        <led>
+        <size>40</size>
+        <halpin>"Solenoid-activated"</halpin>
+	<off_color>"black"</off_color>
+        </led>
+	<label>
+        <text>"Solenoid activated"</text>
+        <font>(200)</font>
+        </label>
+
+	</hbox>
+	
+	<hbox>
+        <led>
+        <size>40</size>
+        <halpin>"Button-pressed"</halpin>
+	<off_color>"black"</off_color>
+        </led>
+	<label>
+        <text>"Button pressed"</text>
+        <font>(200)</font>
+        </label>
+	</hbox>
+
+
+
+</vbox>		
+
+
+
+	 <label>
+                <text> "Spindle thermistor voltage:"</text>
+        </label>
+        <bar>
+                <halpin>"voltage"</halpin>
+                <max_>3500</max_>
+        </bar>
+
+
+
+</pyvcp>

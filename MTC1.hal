@@ -1,0 +1,49 @@
+loadrt and2
+loadrt or2
+loadrt near count=2
+
+addf and2.0 servo-thread 
+addf or2.0 servo-thread
+addf near.0 servo-thread
+addf near.1 servo-thread
+
+# Implementing condition for spindle speed. If spindle speed is zero the process can continue.
+net spindle-speed-cmd motion.spindle-speed-out => near.0.in1
+setp near.0.in2 0
+setp near.0.difference 2.0
+
+net spindle-stopped near.0.out => and2.0.in0
+
+#need AND for SPINDLE-FWD false for button to work
+net spindle-fwd bb_gpio.p9.out-11 =>and2.0.in2
+
+#Tool release button
+net release-button bb_gpio.p9.in-24 => and2.0.in1
+setp bb_gpio.p9.in-24.invert 1
+
+#Tool release solenoid
+net release-tool and2.0.out => bb_gpio.p9.out-42
+
+
+
+
+
+
+# Implementing condition for spindle temperature. Max spindle temperature is assumed 117 C.
+net temperature-r => near.1.in1
+setp near.1.in2 167
+setp near.1.difference 50.0
+#setp near.1.out.invert 1
+
+# Setting up a signal that tells if the spindle temperature is too high
+net spindle-temp-high near.1.out => or2.0.in0
+
+# Setting up a signal that tells if a tool is absent in the spindle
+net tool-present bb_gpio.p8.in-07 => or2.0.in1
+setp bb_gpio.p8.in-07.invert 1
+
+#Spindle Limit +
+net spindle-inhibit motion.spindle-inhibit or2.0.out
+
+#will inhibit SPINDLE-FWD when false
+

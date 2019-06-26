@@ -1,0 +1,31 @@
+<pyvcp>
+
+
+	<meter>
+		<halpin>"temp"</halpin>
+		<text>"Spindle"</text>
+		<subtext>"Temperature[C]"</subtext>
+		<size>250</size>
+		<min_>10</min_>
+		<max_>140</max_>
+		<majorscale>10</majorscale>
+		<minorscale>2</minorscale>
+		<region1>(115,140,"red")</region1>
+		<region2>(105,115,"green")</region2>
+		<region3>(10,105,"blue")</region3>
+	</meter>
+		
+
+
+
+	 <label>
+                <text> "Spindle thermistor voltage:"</text>
+        </label>
+        <bar>
+                <halpin>"voltage"</halpin>
+                <max_>3500</max_>
+        </bar>
+
+
+
+</pyvcp>
